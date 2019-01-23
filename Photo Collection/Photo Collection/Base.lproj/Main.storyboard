@@ -56,7 +56,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="60N-QN-fcZ">
-                        <barButtonItem key="leftBarButtonItem" title="Select Theme" id="Zcv-Xy-UUb"/>
+                        <barButtonItem key="leftBarButtonItem" title="Select Theme" id="Zcv-Xy-UUb">
+                            <connections>
+                                <segue destination="ai6-vt-5Sf" kind="presentation" identifier="SelectTheme" id="OEX-yK-lCp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Efc-KG-zak">
                             <connections>
                                 <segue destination="etM-1A-m8P" kind="show" identifier="AddPhoto" id="Iw4-SG-ygY"/>
@@ -67,6 +71,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwe-Pk-eRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.8" y="254.12293853073464"/>
+        </scene>
+        <!--Theme Selection View Controller-->
+        <scene sceneID="Hn6-RI-eKd">
+            <objects>
+                <viewController id="ai6-vt-5Sf" customClass="ThemeSelectionViewController" customModule="Photo_Collection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cfv-Es-00u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select A Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt3-Cw-TJ9">
+                                <rect key="frame" x="125" y="67" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JT5-UB-5R5">
+                                <rect key="frame" x="237" y="153" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ICE BLUE"/>
+                                <connections>
+                                    <action selector="selectIceTheme:" destination="ai6-vt-5Sf" eventType="touchUpInside" id="tis-CB-CWL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bJ-1W-45m">
+                                <rect key="frame" x="55" y="153" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DARKNESS"/>
+                                <connections>
+                                    <action selector="selectDarkTheme:" destination="ai6-vt-5Sf" eventType="touchUpInside" id="mZF-n1-kf6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WIz-Dw-cHG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XF9-Rk-lnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="985"/>
         </scene>
         <!--Title-->
         <scene sceneID="YFK-QZ-LbS">
