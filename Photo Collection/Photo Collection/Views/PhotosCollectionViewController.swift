@@ -55,6 +55,16 @@ class PhotosCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    func setTheme() {
+        guard let theme = themeHelper.themePreference else { return }
+        
+        if theme == "Dark" {
+            view.backgroundColor = .gray
+        } else {
+            view.backgroundColor = .cyan
+        }
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -87,4 +97,30 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddPhoto" {
+            //pass info here
+            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
+            detailVC.photoController = photoController
+            detailVC.themeHelper = themeHelper
+
+        } else if segue.identifier == "MoreInfo" {
+            //pass info here
+            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
+            guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
+            let photo = photoController.photos[indexPath.item]
+            
+            detailVC.photoController = photoController
+            detailVC.themeHelper = themeHelper
+            //detailVC.photo = photo
+            
+        } else if segue.identifier == "SelectTheme" {
+            //pass info here
+            guard let detailVC = segue.destination as? ThemeSelectionViewController else { return }
+            detailVC.themeHelper = themeHelper
+        }
+        
+    }
+
+    
 }
