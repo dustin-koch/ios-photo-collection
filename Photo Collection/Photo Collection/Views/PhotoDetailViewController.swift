@@ -32,4 +32,17 @@ class PhotoDetailViewController: UIViewController {
     }
     */
 
+    //Mark: - Outlets
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textField: UITextField!
+    @IBAction func addPhoto(_ sender: UIButton) {
+    }
+    @IBAction func savePhoto(_ sender: UIBarButtonItem) {
+    }
+    
+
+    
+    
+    
 }
