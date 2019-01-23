@@ -13,11 +13,25 @@ class ThemeHelper {
     
     let themePreferenceKey: String = "key"
     
-    func setThemePreferenceToDark() {
-        
-        let preference = UserDefaults.se
+    init(){
+        if themePreference == nil {
+            setThemePreferenceToIce()
+        } else { return }
     }
     
+    func setThemePreferenceToDark() {
+        
+        UserDefaults.standard.set("Dark", forKey: themePreferenceKey)
+    }
+    
+    func setThemePreferenceToIce() {
+        UserDefaults.standard.set("Ice", forKey: themePreferenceKey)
+    }
+    
+    var themePreference: String? {
+        
+        return UserDefaults.standard.string(forKey: themePreferenceKey)
+    }
 }
 
 

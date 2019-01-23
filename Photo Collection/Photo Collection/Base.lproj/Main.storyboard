@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,21 +19,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k0A-9f-c54">
-                            <size key="itemSize" width="176" height="183"/>
+                            <size key="itemSize" width="159" height="163"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kqJ-yL-FPx" customClass="PhotosCollectionViewCell" customModule="Photo_Collection" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="176" height="183"/>
+                                <rect key="frame" x="8" y="8" width="159" height="163"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="176" height="183"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="163"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uwt-PZ-WOQ">
-                                            <rect key="frame" x="20" y="0.0" width="136" height="128"/>
+                                            <rect key="frame" x="9" y="0.0" width="136" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIq-Or-tTG">
@@ -44,6 +45,9 @@
                                         </label>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <segue destination="etM-1A-m8P" kind="show" identifier="MoreInfo" id="PSM-Tw-ICl"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -51,11 +55,33 @@
                             <outlet property="delegate" destination="B0F-Le-T5R" id="vNh-Gg-Bcy"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="60N-QN-fcZ"/>
+                    <navigationItem key="navigationItem" id="60N-QN-fcZ">
+                        <barButtonItem key="leftBarButtonItem" title="Select Theme" id="Zcv-Xy-UUb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Efc-KG-zak">
+                            <connections>
+                                <segue destination="etM-1A-m8P" kind="show" identifier="AddPhoto" id="Iw4-SG-ygY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwe-Pk-eRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.8" y="254.12293853073464"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="YFK-QZ-LbS">
+            <objects>
+                <viewController id="etM-1A-m8P" customClass="PhotoDetailViewController" customModule="Photo_Collection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NzB-61-w5p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0lA-lC-HQf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhf-8t-1YP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913" y="254"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DSx-dX-yEy">
@@ -76,4 +102,7 @@
             <point key="canvasLocation" x="205.59999999999999" y="254.12293853073464"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PSM-Tw-ICl"/>
+    </inferredMetricsTieBreakers>
 </document>
