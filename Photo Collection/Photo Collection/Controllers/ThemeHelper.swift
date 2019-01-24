@@ -29,7 +29,7 @@ class ThemeHelper {
     }
     
     var themePreference: String? {
-        
+
         return UserDefaults.standard.string(forKey: themePreferenceKey)
     }
 }

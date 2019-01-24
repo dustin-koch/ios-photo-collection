@@ -15,16 +15,10 @@ class PhotosCollectionViewController: UICollectionViewController {
     let photoController = PhotoController()
     let themeHelper = ThemeHelper()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTheme()
+        collectionView?.reloadData()
     }
 
     /*
@@ -60,9 +54,9 @@ class PhotosCollectionViewController: UICollectionViewController {
         guard let theme = themeHelper.themePreference else { return }
         
         if theme == "Dark" {
-            view.backgroundColor = .gray
+            collectionView.backgroundColor = .gray
         } else {
-            view.backgroundColor = .cyan
+            collectionView.backgroundColor = .cyan
         }
     }
 
@@ -98,29 +92,47 @@ class PhotosCollectionViewController: UICollectionViewController {
     */
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddPhoto" {
-            //pass info here
-            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
+        
+        if let detailVC = segue.destination as? PhotoDetailViewController {
             detailVC.photoController = photoController
             detailVC.themeHelper = themeHelper
-
-        } else if segue.identifier == "MoreInfo" {
-            //pass info here
-            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
-            guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
-            let photo = photoController.photos[indexPath.item]
             
-            detailVC.photoController = photoController
-            detailVC.themeHelper = themeHelper
-            //detailVC.photo = photo
-            
-        } else if segue.identifier == "SelectTheme" {
-            //pass info here
-            guard let detailVC = segue.destination as? ThemeSelectionViewController else { return }
-            detailVC.themeHelper = themeHelper
+            if segue.identifier == "MoreInfo" {
+                
+                guard let index = collectionView?.indexPathsForSelectedItems?.first?.item else { return }
+                let photo = photoController.photos[index]
+                detailVC.photo = photo
+                
+            } else if segue.identifier == "AddPhoto"{
+                // need something here?
+            }
         }
         
-    }
+        if let themeVC = segue.destination as? ThemeSelectionViewController {
+            themeVC.themeHelper = themeHelper
+        }
 
-    
+    }
 }
+
+//        if segue.identifier == "AddPhoto" {
+//            //pass info here
+//            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
+//            detailVC.photoController = photoController
+//            detailVC.themeHelper = themeHelper
+//
+//        } else if segue.identifier == "MoreInfo" {
+//            //pass info here
+//            guard let detailVC = segue.destination as? PhotoDetailViewController else { return }
+//            guard let indexPath = collectionView.indexPathsForSelectedItems else { return }
+//            let photo = photoController.photos[index]
+//
+//            detailVC.photoController = photoController
+//            detailVC.themeHelper = themeHelper
+//            //detailVC.photo = photo
+//
+//        } else if segue.identifier == "SelectTheme" {
+//            //pass info here
+//            guard let detailVC = segue.destination as? ThemeSelectionViewController else { return }
+//            detailVC.themeHelper = themeHelper
+//        }
