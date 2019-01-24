@@ -32,9 +32,13 @@ class ThemeSelectionViewController: UIViewController {
     //Mark: - Outlets
     
     @IBAction func selectDarkTheme(_ sender: UIButton) {
+        themeHelper?.setThemePreferenceToDark()
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func selectIceTheme(_ sender: UIButton) {
+        themeHelper?.setThemePreferenceToIce()
+        dismiss(animated: true, completion: nil)
     }
     
 }
